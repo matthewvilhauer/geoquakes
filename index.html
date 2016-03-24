@@ -26,27 +26,40 @@
 		<title>Quake Watch</title>
 	</head>
 	<body>
-		<div class="container">
+		<div class="container col-sm-12">
 			<div class="row">
-				<div class="col-sm-8">
+				<div class="col-sm-6">
 					<div id="map">
 					</div>
 				</div>
 
-				<div class="col-sm-4">
+				<div class="col-sm-6 information">
 					<div id="info">
 						<script id="earthquakes-template" type="text/x-handlebars-template">
-							<h1>Earthquakes from the past week:</h1>
-							{{#each earthquakes}}
-									<div class="row">
-										<div class="col-sm-8">
-											<h4>{{properties.title}}</h4>
-										</div>
-										<div class="col-sm-4">
-											<h3>{{properties.mag}}<h3>
-										</div>
-									</div>
-							{{/each}}
+							<h1 class="info-title">Earthquakes from the past week:</h1>
+							<table>
+								<th><h3>Earthquake Location</h3></th><th><h3>Time Since</h3></th><th><h3>Magnitude</h3></th>
+								{{#each earthquakes}}
+										<!-- <div class="row earthquakeRow"> -->
+											<tr>
+												<td><h4 class="quakeName">{{nameSlicer properties.title}}</h4></td>
+
+											<!-- <div class="col-sm-2">
+												<h3>{{properties.mag}}<h3>
+											</div> -->
+
+												<td class="timeTable"><p id="time">
+													{{yearsAgo properties.time}}</br>
+													{{daysAgo properties.time}}</br>
+													{{hoursAgo properties.time}}</br>
+													{{minutesAgo properties.time}}</br>
+													{{secondsAgo properties.time}}</br>
+												</p></td>
+												<td><p class="magnitude">{{properties.mag}}</p></td>
+											</tr>
+
+								{{/each}}
+							</table>
 						</script>
 					</div>
 
